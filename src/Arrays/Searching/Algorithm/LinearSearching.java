@@ -1,4 +1,4 @@
-package Arrays.Searching;
+package Arrays.Searching.Algorithm;
 
 public class LinearSearching {
     public static void main(String args[]){
@@ -11,7 +11,7 @@ public class LinearSearching {
 
     private static int linear(int[] a, int target) {
 
-        for(int i = 0 ; i<a.length ; i++){
+        for(int i = 0 ; i < a.length ; i++){
             if(a[i] == target){
                 return i+1;
             }
