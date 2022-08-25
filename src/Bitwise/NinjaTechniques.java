@@ -23,7 +23,6 @@ public class NinjaTechniques {
 //            return (char)(ch | 1<<5);
 
 
-
 //    Method-2 --->  ASCII VALUE of space(' ') is 32 and its binary is 100000 ,
 //        so we can OR(bitwise) ' ' with the UpperCase character to convert it to lowerCase character.
         return (char)(ch | ' ');
