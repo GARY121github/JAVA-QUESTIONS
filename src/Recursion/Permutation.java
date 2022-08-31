@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Permutation {
     public static void main(String[] args) {
         printPerm("abc" , "");
+        System.out.println(returnPermution("abc", ""));
     }
     static void printPerm(String st, String ans){
         if(st.isEmpty())
@@ -27,20 +28,20 @@ public class Permutation {
         }
     }
 
-//    static ArrayList<String> print_permutation(String st , String ans){
-//        if(st.isEmpty()){
-//            ArrayList<String> l = new ArrayList<>();
-//            l.add(ans);
-//            return l;
-//        }
-//        char ch = st.charAt(0);
-//        ArrayList<String> list = new ArrayList<>();
-//        for(int i = 0 ; i <= ans.length() ; i++){
-//            String f = st.substring(0,i);
-//            String s = st.substring(i , ans.length());
-//            list.add(print_permutation(st.substring(1) , f + ch + s);
-//        }
-//
-//    }
+    static ArrayList<String> returnPermution(String st , String ans){
+        if(st.isEmpty()){
+            ArrayList<String> li = new ArrayList<>();
+            li.add(ans);
+            return li;
+        }
+        char ch = st.charAt(0);
+        ArrayList<String> answer = new ArrayList<>();
+        for(int i = 0 ; i <= ans.length() ; i++){
+            String f = ans.substring(0, i );
+            String s = ans.substring(i , ans.length());
+            answer.addAll(returnPermution(st.substring(1) , f + ch + s));
+        }
+        return answer;
+    }
 
 }
