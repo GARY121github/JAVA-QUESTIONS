@@ -1,4 +1,4 @@
-package Arrays.Questions;
+package GoodQuestions;
 
 //      Given an unsorted array arr[] of size N having both negative and positive integers.
 //      The task is place all negative element at the end of array without changing the order

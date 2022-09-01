@@ -1,4 +1,4 @@
-package Arrays.Questions;
+package GoodQuestions;
 //
 //2217. Find Palindrome With Fixed Length :->
 //
