@@ -69,4 +69,11 @@ public class Palindrome_With_Fixed_Length {
     }
  */
 
+//    public long[] kthPalindrome(int[] queries, int intLength){
+//        long ans[] = new long[queries.length];
+//        int start = (int) Math.pow(10, intLength-1);
+//        int end = (int) Math.pow(10, intLength) - 1;
+//    }
+
+
 }
