@@ -31,12 +31,10 @@ package GoodQuestions;
 //        1 <= intLength <= 15
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Palindrome_With_Fixed_Length {
 
-    public static void main(String[] args) {
-
-    }
 
 //    BRUTEFORCE :->
 /*    public long[] kthPalindrome(int[] queries, int intLength) {
@@ -75,5 +73,44 @@ public class Palindrome_With_Fixed_Length {
 //        int end = (int) Math.pow(10, intLength) - 1;
 //    }
 
+//    OPTIMAL SOLUTION :->
+    static long[] kthPalindrome(int[] queries, int intLength) {
+        int start = (int) Math.pow(10, (intLength + 1) / 2 - 1);
+        int end = (int) Math.pow(10, (intLength + 1) / 2);
+        int mul = (int) Math.pow(10, intLength / 2);
+        long[] ans = new long[queries.length];
 
+
+        for (int i = 0; i < queries.length; ++i){
+            if (start + queries[i] > end)
+                ans[i] = -1;
+            else
+                ans[i] = getKthPalindrome(queries[i], start, mul, intLength);
+        }
+        return ans;
+    }
+
+
+    static long getKthPalindrome(int q, int start, int mul, int intLength) {
+
+        long prefix = start + q - 1;
+
+        return prefix * mul + reverse(intLength % 2 == 1 ? prefix / 10 : prefix);
+    }
+
+    static long reverse(long num) {
+        long res = 0;
+        while (num > 0) {
+            res = res * 10 + num % 10;
+            num /= 10;
+        }
+        return res;
+    }
+    public static void main(String[] args) {
+        int[] queries = {1,2,3,4,5,90};
+        int intLength = 3;
+        long[] ans = kthPalindrome(queries, intLength);
+        System.out.println(Arrays.toString(ans));
+
+    }
 }
