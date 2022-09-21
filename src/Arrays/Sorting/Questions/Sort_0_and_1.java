@@ -1,7 +1,7 @@
 package Arrays.Sorting.Questions;
 
 //        Segregate 0s and 1s
-//        EasyAccuracy: 59.27%Submissions: 46299Points: 2
+//
 //        Given an array of length N consisting of only 0s and 1s in random order. Modify the array to segregate 0s on left side and 1s on the right side of the array.
 //
 //        Example 1:
@@ -72,3 +72,4 @@ public class Sort_0_and_1 {
         }
     }
 }
+
