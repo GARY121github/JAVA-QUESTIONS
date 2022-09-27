@@ -6,6 +6,8 @@ time limit per test1 second
 memory limit per test256 megabytes
 inputstandard input
 outputstandard output
+
+
 Polycarp has a string s consisting of lowercase Latin letters.
 
 He encodes it using the following algorithm.
@@ -82,30 +84,15 @@ public class Decode_String_1729B {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
-        while(t-- > 0){
-            int l = sc.nextInt() - 1;
+        while (t-- > 0){
+            int l = sc.nextInt();
             String st = sc.next();
-            String ans = "";
-            while (l >= 0){
-                char ch = st.charAt(l);
-                System.out.println(ch + " :-> ");
-                if(ch == '0') {
-                    int a = Integer.parseInt(st.substring(l-2 , l));
-                    System.out.println(a);
-                    ans = (char) ('a' + a) + ans;
-                    l = l - 3;
-                    System.out.println(ans + " ---> " + l);
-                }
-                else {
-                    int a = t;
-                    System.out.println(a);
-                    ans = (char) ('a' + a) + ans;
-                    l = l-1;
-                    System.out.println(ans + " ---> " + l);
-                }
-            }
-            System.out.println(ans);
-        }
+            StringBuilder builder = new StringBuilder();
+            int i = st.length() - 1;
+            while (i >= 0){
+                char ch = st.charAt(i);
 
+            }
+        }
     }
 }
