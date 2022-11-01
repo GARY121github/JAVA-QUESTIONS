@@ -87,12 +87,22 @@ public class Decode_String_1729B {
         while (t-- > 0){
             int l = sc.nextInt();
             String st = sc.next();
-            StringBuilder builder = new StringBuilder();
-            int i = st.length() - 1;
-            while (i >= 0){
+            String ans = "";
+            for(int i = l-1 ; i >=0 ; i--){
                 char ch = st.charAt(i);
-
+                if(ch == '0'){
+                    int a = Integer.parseInt(st.substring(i-2 , i));
+//                    System.out.println(i + " ---> " + a);
+                    ans = String.valueOf((char)('a' - 1 + a)) + ans;
+                    i = i-2;
+                }
+                else{
+                    int a = ch - '0';
+//                    System.out.println(i + "--->" + a);
+                    ans = String.valueOf((char) ('a' - 1 + a)) + ans;
+                }
             }
+            System.out.println(ans);
         }
     }
 }
