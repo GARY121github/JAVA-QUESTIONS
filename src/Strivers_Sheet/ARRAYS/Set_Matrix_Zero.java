@@ -24,28 +24,97 @@ public class Set_Matrix_Zero {
             int n = sc.nextInt();
             int m = sc.nextInt();
             int[][] arr = new int[n][m];
-            for(int i = 0 ; i < n ; i++) {
-                for (int j = 0; j < m; j++) {
+            for(int i = 0 ; i < n ; i++){
+                for(int j = 0 ; j < m ; j++){
                     arr[i][j] = sc.nextInt();
+                }
+            }
+
+            display(arr);
+
+            System.out.println();
+
+            setMatrixZero(arr);
+
+            display(arr);
+
+
+        }
+    }
+
+
+    static void setMatrixZero(int[][] arr){
+        for(int i = 0 ; i < arr.length ; i++){
+            for (int j = 0 ; j < arr[i].length ; j++){
+                if(arr[i][j] == 0){
+                    set_1(arr , i , j);
+                }
+            }
+        }
+        setZero(arr);
+    }
+
+    static void set_1(int[][] arr , int r , int c){
+
+//        SET LEFT SIDE TO -1
+        for(int i = r ; i >= 0 ; i--){
+            if(arr[i][c] == 0){
+                continue;
+            }
+            else {
+                arr[i][c] = -1;
+            }
+        }
+
+//        SET RIGHT SIDE TO -1
+        for(int i = r ; i < arr.length ; i++){
+            if(arr[i][c] == 0){
+                continue;
+            }
+            else {
+                arr[i][c] = -1;
+            }
+        }
+
+//        SET TOP SIDE TO -1
+        for (int j = c ; j >= 0 ; j--){
+            if(arr[r][j] == 0){
+                continue;
+            }
+            else {
+                arr[r][j] = -1;
+            }
+        }
+
+
+//        SET BOTTOM SIDE TO -1
+        for (int j = c ; j < arr[0].length ; j++){
+            if(arr[r][j] == 0){
+                continue;
+            }
+            else {
+                arr[r][j] = -1;
+            }
+        }
+    }
+
+
+    static void setZero(int[][] arr){
+        for(int i = 0 ; i < arr.length ; i++){
+            for(int j = 0 ; j < arr[i].length ; j++){
+                if(arr[i][j] == -1){
+                    arr[i][j] = 0;
                 }
             }
         }
     }
 
-    static void zeroPositions(int[][] arr){
-        int[][] zeros = new int[1][arr.length];
-        for(int i = 0 ; i < zeros.length ; i++){
-            for(int j = 0 ; j < zeros[i].length ; j++){
-                arr[i][j] = -1;
-            }
-        }
-        int a = 0 , b = 0;
+    static void display(int[][] arr){
         for(int i = 0 ; i < arr.length ; i++){
             for(int j = 0 ; j < arr[i].length ; j++){
-                if(arr[i][j] == 0){
-//                    zeros[a][b++] =
-                }
+                System.out.print(arr[i][j] + " ");
             }
+            System.out.println();
         }
     }
 }
