@@ -34,7 +34,7 @@ public class NinjaTechniques {
 //    Method-1 --->   To covert LowerCase Letter to upper case letter we need to un-set the 5th bit of the Character.
 //            return (char)(ch & ~(1 << 5));
 
-//    Method-2 ---> ASCII VALUE of underscore('_') is 95 and its binary is 1011111 ,
+//    Method-2 ---> ASCII VALUE of underscore('_') is 95 and its binary iscdc 1011111 ,
 //         so we can AND(bitwise) '_' with the LowerCase character to convert it to upperCase character.
 
         return (char) (ch & '_');

@@ -62,7 +62,7 @@ public class Set_Matrix_Zero {
                 continue;
             }
             else {
-                arr[i][c] = -1;
+                arr[i][c] = 0;
             }
         }
 
@@ -72,7 +72,7 @@ public class Set_Matrix_Zero {
                 continue;
             }
             else {
-                arr[i][c] = -1;
+                arr[i][c] = 0;
             }
         }
 
@@ -82,7 +82,7 @@ public class Set_Matrix_Zero {
                 continue;
             }
             else {
-                arr[r][j] = -1;
+                arr[r][j] = 0;
             }
         }
 
@@ -93,7 +93,7 @@ public class Set_Matrix_Zero {
                 continue;
             }
             else {
-                arr[r][j] = -1;
+                arr[r][j] = 0;
             }
         }
     }
