@@ -43,9 +43,39 @@ public class Find_the_Pivot_Integer {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
         System.out.println(pivot(N));
+
+        System.out.println(method_1(N));
     }
 
 //    n/2[2a + (n – 1)d]
+
+    static int method_1(int n){
+
+        int a , d , m;
+        for(int i = 1 ; i <= n ; i++){
+
+//            LEFT PART
+            a = 1;
+            d = 1;
+            m = i;
+
+            int left_part = (m/2) * (2*a + (m-1) * d);
+
+//            RIGHT PART
+            a = i;
+            d = 1;
+            m = n;
+
+            int right_part = (m/2) * (2*a + (m-1) * d);
+
+            if(left_part == right_part){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
     static int pivot(int N){
         for(int i = 1 ; i <= N ; i++){
 
