@@ -34,7 +34,7 @@ divisor != 0
 
 public class Divide_Two_Integers {
     public static void main(String[] args) {
-        int dividend = -1;
+        int dividend = -2147483648;
         int divisor = -1;
         System.out.println(divide_two(dividend , divisor));;
     }
@@ -42,10 +42,10 @@ public class Divide_Two_Integers {
     static int divide_two(int dividend, int divisor) {
 //        FOR POSITIVE NUMBERS
         if(dividend > 0 && divisor > 0)
-        return positive(dividend , divisor);
+            return positive(dividend , divisor);
 
 //        WHEN ONE OF THEM IS NEGATIVE NUMBERS
-        else if(dividend < 0 || divisor < 0)
+        else if((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0))
             return one_is_negative(dividend , divisor);
 
 //        WHEN BOTH ARE NEGATIVE
@@ -54,6 +54,7 @@ public class Divide_Two_Integers {
     }
 
     static int positive(int dividend, int divisor){
+//        System.out.println("BOTH ARE POSITIVE");
         int product_by_sum = 0;
         int count = 0;
         while (true){
@@ -68,6 +69,7 @@ public class Divide_Two_Integers {
     }
 
     static int one_is_negative(int dividend, int divisor){
+//        System.out.println("ONR IS NEGATIVE");
         int product_by_sum = 0;
         int count = 0;
         if(dividend < 0){
@@ -87,19 +89,21 @@ public class Divide_Two_Integers {
         return  count*-1;
     }
     static int both_are_negative(int dividend, int divisor){
+//        System.out.println("BOTH ARE NEGATIVE");
+        dividend = dividend*-1;
+        divisor = divisor*-1;
         int product_by_sum = 0;
         int count = 0;
-       dividend *= -1;
-       divisor *= -1;
-
-        while (true){
+        while(true){
             product_by_sum += divisor;
             if(product_by_sum > dividend){
                 break;
             }
+            if(count == Integer.MAX_VALUE){
+                return Integer.MAX_VALUE;
+            }
             count++;
         }
-
-        return  count;
+        return count;
     }
 }
