@@ -43,7 +43,7 @@ import java.util.Arrays;
 public class Missing_Number_268 {
     public static void main(String[] args) {
         int[] arr = {9,6,4,2,3,5,7,0,1};
-        System.out.println(solution_1(arr));
+        System.out.println(solution_2(arr));
     }
 
 
@@ -70,7 +70,7 @@ public class Missing_Number_268 {
     }
 
     //binary search
-    public int solution_2(int[] nums) {
+    static int solution_2(int[] nums) {
         Arrays.sort(nums);
         int left = 0, right = nums.length, mid= (left + right)/2;
         while(left<right){
