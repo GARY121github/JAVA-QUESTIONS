@@ -43,10 +43,11 @@ import java.util.Arrays;
 public class Missing_Number_268 {
     public static void main(String[] args) {
         int[] arr = {9,6,4,2,3,5,7,0,1};
-        System.out.println(missingNumber(arr));
+        System.out.println(solution_1(arr));
     }
 
-    static int missingNumber(int[] arr) {
+
+    static int solution_1(int[] arr) {
         Arrays.sort(arr);
         int num = 0;
         for(int i = 0 ; i < arr.length ; i++ , num++){
@@ -55,5 +56,37 @@ public class Missing_Number_268 {
             }
         }
         return arr.length;
+    }
+
+//    SUM
+    public int missingNumber(int[] nums) {
+        int sum = 0;
+        for(int i = 0; i < nums.length; i++){
+            sum += i;
+            sum -= nums[i];
+        }
+        sum += nums.length;
+        return sum;
+    }
+
+    //binary search
+    public int solution_2(int[] nums) {
+        Arrays.sort(nums);
+        int left = 0, right = nums.length, mid= (left + right)/2;
+        while(left<right){
+            mid = (left + right)/2;
+            if(nums[mid]>mid) right = mid;
+            else left = mid+1;
+        }
+        return left;
+    }
+    //xor
+    public int solution_3(int[] nums) {
+        int res = nums.length;
+        for(int i=0; i<nums.length; i++){
+            res ^= i;
+            res ^= nums[i];
+        }
+        return res;
     }
 }
