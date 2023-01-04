@@ -15,7 +15,7 @@ public class Majority_Element_II_229 {
         int number1 = nums[0], number2 = nums[0], count1 = 0, count2 = 0, len = nums.length;
         for (int i = 0; i < len; i++) {
             if (nums[i] == number1)
-                count1++;
+                        count1++;
             else if (nums[i] == number2)
                 count2++;
             else if (count1 == 0) {
