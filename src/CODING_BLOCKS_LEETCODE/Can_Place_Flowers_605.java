@@ -28,7 +28,7 @@ public class Can_Place_Flowers_605 {
     public static void main(String[] args) {
         int[] arr = {1,0};
         int n = 1;
-        System.out.println(canPlaceFlowers(arr , n));
+        System.out.println(canPlantTrees(arr , n));
     }
 
     static boolean canPlaceFlowers(int[] flowerbed, int n) {
@@ -36,12 +36,7 @@ public class Can_Place_Flowers_605 {
             return true;
         }
         if(flowerbed.length == 1){
-            if(flowerbed[0] == 0 && n == 1){
-                return true;
-            }
-            else{
-                return false;
-            }
+            return flowerbed[0] == 0 && n == 1;
         }
        int i = 0;
        while (i < flowerbed.length){
@@ -64,5 +59,35 @@ public class Can_Place_Flowers_605 {
        }
        return false;
     }
+
+    static boolean canPlantTrees(int[] garden, int n) {
+        if(n == 0){
+            return true;
+        }
+        if(garden.length == 1){
+            return garden[0] == 0 && n == 1;
+        }
+        int i = 0;
+        while (i < garden.length){
+            if(i == 0 && garden[i] == 0 && garden[i+1] != 1){
+                n = n-1;
+                garden[i] = 1;
+            }
+            else if(i == garden.length-1 && garden[i] == 0 && garden[i-1] != 1){
+                n = n-1;
+                garden[i] = 1;
+            }
+            else if(i !=0 && i!=garden.length-1 && garden[i] == 0 && garden[i+1] != 1 && garden[i-1] != 1){
+                n = n-1;
+                garden[i] = 1;
+            }
+            if(n == 0){
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
+
 
 }
