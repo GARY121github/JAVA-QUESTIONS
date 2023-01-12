@@ -1,5 +1,6 @@
 package CODING_BLOCKS_LEETCODE;
 
+import javax.naming.PartialResultException;
 import java.util.*;
 public class Largest_Number_179 {
     public static void main(String[] args) {
@@ -7,6 +8,7 @@ public class Largest_Number_179 {
     }
 
     public String largestNumber(int[] nums) {
+        Arrays.sort(nums);
         // 1.Convert to Integer array since Arrays.sort(A,T) forces that
         String[] strs = new String[nums.length];
         for (int i = 0; i < nums.length; i++) {
