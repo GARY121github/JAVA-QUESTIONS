@@ -1,34 +1,94 @@
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class Doubts {
-    public static void main(String[] args) {
-        int target = 4;
-        possibleWays(target , 0 , "");
+    // A utility function to return
+    // precedence of a given operator
+    // Higher returned value means
+    // higher precedence
+    static int Prec(char ch)
+    {
+        switch (ch) {
+            case '+':
+            case '-':
+                return 1;
+
+            case '*':
+            case '/':
+                return 2;
+
+            case '^':
+                return 3;
+        }
+        return -1;
     }
 
-    static void possibleWays(int target , int current , String ans){
-        if(current == target){
-            System.out.println(ans);
-            return;
+    // The main method that converts
+    // given infix expression
+    // to postfix expression.
+    static String infixToPostfix(String exp)
+    {
+        // initializing empty String for result
+        String result = new String("");
+
+        // initializing empty stack
+        Stack<Character> stack
+                = new Stack<>();
+
+        for (int i = 0; i < exp.length(); ++i) {
+            char c = exp.charAt(i);
+
+            // If the scanned character is an
+            // operand, add it to output.
+            if (Character.isLetterOrDigit(c))
+                result += c;
+
+                // If the scanned character is an '(',
+                // push it to the stack.
+            else if (c == '(')
+                stack.push(c);
+
+                //  If the scanned character is an ')',
+                // pop and output from the stack
+                // until an '(' is encountered.
+            else if (c == ')') {
+                while (!stack.isEmpty()
+                        && stack.peek() != '(') {
+                    result += stack.peek();
+                    stack.pop();
+                }
+
+                stack.pop();
+            }
+            else // an operator is encountered
+            {
+                while (!stack.isEmpty()
+                        && Prec(c) <= Prec(stack.peek())) {
+
+                    result += stack.peek();
+                    stack.pop();
+                }
+                stack.push(c);
+            }
         }
 
-        if(current > target){
-            return;
+        // pop all the operators from the stack
+        while (!stack.isEmpty()) {
+            if (stack.peek() == '(')
+                return "Invalid Expression";
+            result += stack.peek();
+            stack.pop();
         }
 
-//        CHOOSE 1
-        possibleWays(target , current+1 , ans+"1 ");
-
-//        CHOOSE 2
-        possibleWays(target , current+2 , ans+"2 ");
-
-//        CHOOSE 3
-        possibleWays(target , current+3 , ans+"3 ");
-
+        return result;
     }
 
+    // Driver's code
+    public static void main(String[] args)
+    {
+        String exp = "a+b*(c^d-e)^(f+g*h)-i";
 
+        // Function call
+        System.out.println(infixToPostfix(exp));
+    }
 }
