@@ -36,10 +36,8 @@ public class Rotated_Digits_788 {
 
                 default: return false;
             }
-
             n /= 10;
         }
-
         return rotate;
     }
 }

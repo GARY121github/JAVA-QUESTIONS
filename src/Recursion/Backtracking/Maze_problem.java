@@ -11,11 +11,7 @@ public class Maze_problem {
 //        number_of_ways01("" , 3 , 3);
 //        System.out.println(total_number_of_ways01("", 3 , 3));
 
-        boolean[][] maze= {
-                {true , true ,true},
-                {true , true ,true},
-                {true , true ,true},
-        };
+        boolean[][] maze= new boolean[3][3];
 
         int[][] steps = new int[maze.length][maze[0].length];
 
@@ -178,30 +174,28 @@ public class Maze_problem {
 
         }
 
-        if(!maze[row][col])
+        if(maze[row][col])
             return;
 
-        maze[row][col] = false;
+        maze[row][col] = true;
 
         steps[row][col] = step_number;
 
-        if(row < maze.length-1 && col < maze[0].length-1)
-            number_of_ways_moving_in_all_directions_with_steps(ans+"D" ,maze , steps,row+1,col+1 , step_number+1);
-
         if(row < maze.length-1)
-            number_of_ways_moving_in_all_directions_with_steps(ans+"V" ,maze, steps , row+1 , col , step_number+1);
-
-        if(col < maze[0].length-1)
-            number_of_ways_moving_in_all_directions_with_steps(ans+"H" , maze , steps ,row , col+1 , step_number+1);
-
-        if(col > 0)
-            number_of_ways_moving_in_all_directions_with_steps(ans+"L", maze, steps, row ,col-1 ,step_number+1);
+            number_of_ways_moving_in_all_directions_with_steps(ans+"D" ,maze, steps , row+1 , col , step_number+1);
 
         if(row > 0)
             number_of_ways_moving_in_all_directions_with_steps(ans+"U" ,maze ,steps, row-1 , col ,step_number+1);
 
+        if(col > 0)
+            number_of_ways_moving_in_all_directions_with_steps(ans+"L", maze, steps, row ,col-1 ,step_number+1);
 
-        maze[row][col] = true;
+        if(col < maze[0].length-1)
+            number_of_ways_moving_in_all_directions_with_steps(ans+"R" , maze , steps ,row , col+1 , step_number+1);
+
+
+
+        maze[row][col] = false;
         steps[row][col] = 0;
 
     }
